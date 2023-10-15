@@ -1,29 +1,16 @@
 from duckduckgo_search import DDGS
 from typing import Union
 from fastapi import FastAPI
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 
 app = FastAPI()
+app.mount("/static", StaticFiles(directory="static"), name="static")
 
 @app.get("/")
-def root():
-	return {"message": "This is a Search API", 
-		"usage": {
-			"sites": {
-				"url": "/sites?q=your_query",
-				"params": {
-					"q": "your_query",
-					"count": "number_of_results (default: 5)"
-				}
-			}, 
-			"images": {
-				"url": "/images?q=your_query",
-				"params": {
-					"q": "your_query",
-					"count": "number_of_results (default: 5)"
-				}
-			}
-		}
-	}
+async def root():
+	return FileResponse("static/index.html")
+
 
 @app.get("/sites")
 def search(q: Union[str, None] = None, count: int = 5):
