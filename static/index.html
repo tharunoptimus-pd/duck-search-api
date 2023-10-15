@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="./static/style.css">
+	<title>Search API with DuckDuckGo</title>
+</head>
+<body>
+	<div class="wrapper">
+		<div class="inputFieldContainer">
+			<input id="searchInput" type="text" name="query" placeholder="Enter your search query">
+			<label>
+				<input type="radio" name="searchType" value="sites" checked> Sites
+			</label>
+			<label>
+				<input type="radio" name="searchType" value="images"> Images
+			</label>
+			<input class="resultCount" inputmode="numeric" aria-label="Count of results" id="resultCount" name="resultCount" min="1" max="50" value="10">
+			<button class="searchButton" type="submit">Search</button>
+		</div>
+		<div class="resultsContainer">
+			<div class="container"></div>
+		</div>
+	</div>
+		
+	</div>
+</body>
+</html>
