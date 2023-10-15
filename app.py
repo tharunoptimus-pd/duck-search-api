@@ -33,3 +33,12 @@ def search(q: Union[str, None] = None, count: int = 5):
 			return results
 	else:
 		return {"message": "Sites API Online"}
+
+@app.get("/images")
+def images(q: Union[str, None] = None, count: int = 5):
+	if q:
+		with DDGS() as ddgs:
+			results = [r for r in ddgs.images(q, max_results=count)]
+			return results
+	else:
+		return {"message": "Images API Online"}
